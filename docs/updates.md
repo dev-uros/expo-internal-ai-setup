@@ -80,7 +80,8 @@ Ako nisi siguran da li je promena native: `npx expo install --check` i `git diff
 ## Obavezno ažuriranje (bez naloga)
 
 Aplikacija pri svakom pokretanju i povratku u prvi plan pita backend
-`GET /mobile/app-version/{ios|android}`, pre prijave. Ako je instalirana verzija starija od
+`GET /mobile/app-version/internal/{ios|android}`, pre prijave (`internal` je ova aplikacija;
+eksterna aplikacija za kupce ima svoj minimum pod `external`). Ako je instalirana verzija starija od
 `minimum_version`, prikazuje **samo** ekran „Potrebno je ažuriranje" sa dugmetom ka prodavnici —
 ni prijava ni ostatak aplikacije nisu dostupni.
 
@@ -90,10 +91,10 @@ sme nikog da zaključa. Isto važi za vrednost koja nije verzija (npr. greška u
 ### Podešavanje — u `.env` backend-a
 
 ```sh
-MOBILE_IOS_MINIMUM_VERSION=1.3.0
-MOBILE_ANDROID_MINIMUM_VERSION=1.3.0
-MOBILE_IOS_STORE_URL=https://apps.apple.com/app/id1234567890
-MOBILE_ANDROID_STORE_URL=https://play.google.com/store/apps/details?id=com.firma.backoffice
+MOBILE_INTERNAL_IOS_MINIMUM_VERSION=1.3.0
+MOBILE_INTERNAL_ANDROID_MINIMUM_VERSION=1.3.0
+MOBILE_INTERNAL_IOS_STORE_URL=https://apps.apple.com/app/id1234567890
+MOBILE_INTERNAL_ANDROID_STORE_URL=https://play.google.com/store/apps/details?id=com.firma.backoffice
 ```
 
 Prazno = nema minimuma. Bez linka ka prodavnici ekran kaže „Obratite se administratoru".
